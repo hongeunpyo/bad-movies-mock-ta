@@ -4,24 +4,12 @@ const { API_KEY } = require('../../config.js');
 
 // write out logic/functions required to query TheMovieDB.org
 var getGenreList = function() {
-  axios.get(`https://api.themoviedb.org/3/genre/movie/list?api_key=${API_KEY}&language=en-US`)
-  .then(function (response) {
-    console.log(response);
-    return response;
-  })
-  .catch(function (err) {
-    return err;
-  })
+  return axios.get(`https://api.themoviedb.org/3/genre/movie/list?api_key=${API_KEY}&language=en-US`)
 }
 
-// const getBreeds = async () => {
-//   try {
-//     return await axios.get('https://dog.ceo/api/breeds/list/all')
-//   } catch (error) {
-//     console.error(error)
-//   }
-// }
-
+var searchMovieByGenre = function(genreId) {
+  return axios.get(`https://api.themoviedb.org/3/discover/movie?api_key=89b6b753d0fb8549ee4c705d86d78b1e&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=1&with_genres=${genreId}`)
+}
 // FOR REFERENCE:
 // https://www.themoviedb.org/account/signup
 // https://developers.themoviedb.org/3/discover/movie-discover
@@ -29,4 +17,7 @@ var getGenreList = function() {
 
 // Don't forget to export your functions and require them within your server file
 
-module.exports = {getGenreList : getGenreList};
+module.exports = {
+  getGenreList : getGenreList,
+  searchMovieByGenre : searchMovieByGenre
+};

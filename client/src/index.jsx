@@ -13,14 +13,20 @@ class App extends React.Component {
       movies: [{deway: "movies"}],
       favorites: [{deway: "favorites"}],
       showFaves: false,
+      genreKey: 28
     };
     
     // you might have to do something important here!
+    this.handleChange = this.handleChange.bind(this);
+  }
+
+  handleChange(event) {
+    this.setState({ genreKey: event.target.value })
   }
 
   getMovies() {
     // make an axios request to your server on the GET SEARCH endpoint
-    Axios.get(`https://localhost:3000/search`)
+    Axios.get(`https://localhost:3000/search?id=${this.state.genreKey}`)
       .then(function (response) {
         console.log(response);
       })
@@ -50,7 +56,7 @@ class App extends React.Component {
         <header className="navbar"><h1>Bad Movies</h1></header> 
         
         <div className="main">
-          <Search swapFavorites={this.swapFavorites} showFaves={this.state.showFaves}/>
+          <Search handleChange={this.handleChange} swapFavorites={this.swapFavorites} showFaves={this.state.showFaves}/>
           <Movies movies={this.state.showFaves ? this.state.favorites : this.state.movies} showFaves={this.state.showFaves}/>
         </div>
       </div>
