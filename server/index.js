@@ -40,13 +40,13 @@ app.get('/genres', function(req, res) {
 
 app.get('/search', function(req, res) {
   // use this endpoint to search for movies by genres (using API key): https://api.themoviedb.org/3/discover/movie
-  console.log('GET REQUEST FROM CLIENT',req);
-  var movieList = searchMovieByGenre();
+  console.log('GET REQUEST FROM CLIENT', req.query.id);
+  var movieList = searchMovieByGenre(req.query.id);
   // and sort them by votes (worst first) using the search parameters in themoviedb API
   movieList
     .then(function (response) {
-      console.log(response.query);
-      // res.send(response)
+      console.log(response.data)
+      res.send(response.data.results)
     })
     .catch(function (err) {
       console.log(err);

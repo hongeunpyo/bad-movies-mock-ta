@@ -20,15 +20,21 @@ class App extends React.Component {
     this.handleChange = this.handleChange.bind(this);
   }
 
+  componentDidMount() {
+    this.getMovies();
+  }
+
   handleChange(event) {
     this.setState({ genreKey: event.target.value })
   }
 
   getMovies() {
     // make an axios request to your server on the GET SEARCH endpoint
-    Axios.get(`https://localhost:3000/search?id=${this.state.genreKey}`)
+    var that = this;
+    Axios.get(`http://localhost:3000/search?id=${that.state.genreKey}`)
       .then(function (response) {
-        console.log(response);
+        console.log(response.data)
+        that.setState({ movies: response.data });
       })
       .catch(function (error) {
         console.log(error);
@@ -54,7 +60,6 @@ class App extends React.Component {
   	return (
       <div className="app">
         <header className="navbar"><h1>Bad Movies</h1></header> 
-        
         <div className="main">
           <Search handleChange={this.handleChange} swapFavorites={this.swapFavorites} showFaves={this.state.showFaves}/>
           <Movies movies={this.state.showFaves ? this.state.favorites : this.state.movies} showFaves={this.state.showFaves}/>

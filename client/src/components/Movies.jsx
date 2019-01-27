@@ -6,6 +6,32 @@ class Movies extends React.Component {
 
   }
 
+  renderMoviesDynamically() {
+    var movies = this.props.movies;
+    var storage = [];
+    for (var i = 0; i < movies.length; i++) {
+      var li = (
+      <li className="movie_item" key={movies[i].id}>
+      <img src={'https://image.tmdb/org/t/p/w185_and_h278_bestv2/' + movies[i].poster_path} />
+      <div className="movie_description">
+        <h2>{movies[i].title}</h2>
+        <section className="movie_details">
+          <div className="movie_year">
+            <span className="title">Year</span>
+            <span>{movies[i].release_date}</span>
+          </div>
+          <div className="movie_rating">
+            <span className="title">Rating</span>
+            <span>{movies[i].vote_average}</span>
+          </div>
+        </section>
+      </div>
+      </li>
+      );
+      storage.push(li);
+    }
+    return storage;
+  }
   // Make an onClick for each list item. If the movies shown is the search results, 
   // onClick add it to the database (do it in the main app, and pass down the function)
 
@@ -18,152 +44,7 @@ class Movies extends React.Component {
 
 
         {/* Make this list dynamic! */}
-
-
-        <li className="movie_item">
-          <img src="https://lh3.googleusercontent.com/97gnjRiv2zIRnDupzfxYFoI-6zlIK3jKgb6KOCDf_tjWkY9epbITdSFIbiKhuccOqQ=w300" />
-          <div className="movie_description">
-            <h2>De Wae</h2>
-            <section className="movie_details">
-              <div className="movie_year">
-                <span className="title">Year</span>
-                <span>2018</span>
-              </div>
-              <div className="movie_rating">
-                <span className="title">Rating</span>
-                <span>10.0</span>
-              </div>
-            </section>
-          </div>
-        </li>
-        <li className="movie_item">
-          <img src="https://lh3.googleusercontent.com/97gnjRiv2zIRnDupzfxYFoI-6zlIK3jKgb6KOCDf_tjWkY9epbITdSFIbiKhuccOqQ=w300" />
-          <div className="movie_description">
-            <h2>De Wae</h2>
-            <section className="movie_details">
-              <div className="movie_year">
-                <span className="title">Year</span>
-                <span>2018</span>
-              </div>
-              <div className="movie_rating">
-                <span className="title">Rating</span>
-                <span>10.0</span>
-              </div>
-            </section>
-          </div>
-        </li>
-        <li className="movie_item">
-          <img src="https://lh3.googleusercontent.com/97gnjRiv2zIRnDupzfxYFoI-6zlIK3jKgb6KOCDf_tjWkY9epbITdSFIbiKhuccOqQ=w300" />
-          <div className="movie_description">
-            <h2>De Wae</h2>
-            <section className="movie_details">
-              <div className="movie_year">
-                <span className="title">Year</span>
-                <span>2018</span>
-              </div>
-              <div className="movie_rating">
-                <span className="title">Rating</span>
-                <span>10.0</span>
-              </div>
-            </section>
-          </div>
-        </li>
-        <li className="movie_item">
-          <img src="https://lh3.googleusercontent.com/97gnjRiv2zIRnDupzfxYFoI-6zlIK3jKgb6KOCDf_tjWkY9epbITdSFIbiKhuccOqQ=w300" />
-          <div className="movie_description">
-            <h2>De Wae</h2>
-            <section className="movie_details">
-              <div className="movie_year">
-                <span className="title">Year</span>
-                <span>2018</span>
-              </div>
-              <div className="movie_rating">
-                <span className="title">Rating</span>
-                <span>10.0</span>
-              </div>
-            </section>
-          </div>
-        </li>
-        <li className="movie_item">
-          <img src="https://lh3.googleusercontent.com/97gnjRiv2zIRnDupzfxYFoI-6zlIK3jKgb6KOCDf_tjWkY9epbITdSFIbiKhuccOqQ=w300" />
-          <div className="movie_description">
-            <h2>De Wae</h2>
-            <section className="movie_details">
-              <div className="movie_year">
-                <span className="title">Year</span>
-                <span>2018</span>
-              </div>
-              <div className="movie_rating">
-                <span className="title">Rating</span>
-                <span>10.0</span>
-              </div>
-            </section>
-          </div>
-        </li>
-        <li className="movie_item">
-          <img src="https://lh3.googleusercontent.com/97gnjRiv2zIRnDupzfxYFoI-6zlIK3jKgb6KOCDf_tjWkY9epbITdSFIbiKhuccOqQ=w300" />
-          <div className="movie_description">
-            <h2>De Wae</h2>
-            <section className="movie_details">
-              <div className="movie_year">
-                <span className="title">Year</span>
-                <span>2018</span>
-              </div>
-              <div className="movie_rating">
-                <span className="title">Rating</span>
-                <span>10.0</span>
-              </div>
-            </section>
-          </div>
-        </li>
-        <li className="movie_item">
-          <img src="https://lh3.googleusercontent.com/97gnjRiv2zIRnDupzfxYFoI-6zlIK3jKgb6KOCDf_tjWkY9epbITdSFIbiKhuccOqQ=w300" />
-          <div className="movie_description">
-            <h2>De Wae</h2>
-            <section className="movie_details">
-              <div className="movie_year">
-                <span className="title">Year</span>
-                <span>2018</span>
-              </div>
-              <div className="movie_rating">
-                <span className="title">Rating</span>
-                <span>10.0</span>
-              </div>
-            </section>
-          </div>
-        </li>
-        <li className="movie_item">
-          <img src="https://lh3.googleusercontent.com/97gnjRiv2zIRnDupzfxYFoI-6zlIK3jKgb6KOCDf_tjWkY9epbITdSFIbiKhuccOqQ=w300" />
-          <div className="movie_description">
-            <h2>De Wae</h2>
-            <section className="movie_details">
-              <div className="movie_year">
-                <span className="title">Year</span>
-                <span>2018</span>
-              </div>
-              <div className="movie_rating">
-                <span className="title">Rating</span>
-                <span>10.0</span>
-              </div>
-            </section>
-          </div>
-        </li>
-        <li className="movie_item">
-          <img src="https://lh3.googleusercontent.com/97gnjRiv2zIRnDupzfxYFoI-6zlIK3jKgb6KOCDf_tjWkY9epbITdSFIbiKhuccOqQ=w300" />
-          <div className="movie_description">
-            <h2>De Wae</h2>
-            <section className="movie_details">
-              <div className="movie_year">
-                <span className="title">Year</span>
-                <span>2018</span>
-              </div>
-              <div className="movie_rating">
-                <span className="title">Rating</span>
-                <span>10.0</span>
-              </div>
-            </section>
-          </div>
-        </li>
+      {this.renderMoviesDynamically()}
 
       </ul>
     );
